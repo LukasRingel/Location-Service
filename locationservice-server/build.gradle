@@ -1,0 +1,41 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.6'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+group 'de.lukasringel.locationservice'
+version '0.0.1-SNAPSHOT'
+sourceCompatibility = '16'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator:2.5.6'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive:2.5.6'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest:2.5.6'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.6'
+    implementation 'com.maxmind.geoip2:geoip2:2.15.0'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+    implementation 'org.rauschig:jarchivelib:1.2.0'
+    implementation project(":locationservice-api")
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    runtimeOnly 'io.micrometer:micrometer-registry-prometheus:1.7.5'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.6'
+    testImplementation 'io.projectreactor:reactor-test:3.4.12'
+    testImplementation 'org.springframework.security:spring-security-test:5.5.1'
+}
+
+test {
+    useJUnitPlatform()
+}

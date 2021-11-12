@@ -1,0 +1,5 @@
+rootProject.name = 'locationservice'
+include 'locationservice-api'
+include 'locationservice-client'
+include 'locationservice-server'
+
